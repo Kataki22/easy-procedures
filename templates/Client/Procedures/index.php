@@ -28,7 +28,12 @@
     <?php foreach ($procedures as $procedure) : ?>
         <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md flex flex-col">
             <div class="aspect-video w-full overflow-hidden bg-gray-100 shrink-0">
-                <img src="<?= $this->Url->build('/template/images/' . ($procedure->image ?? 'procedure_default.jpg')) ?>" alt="<?= h($procedure->name) ?>" class="h-full w-full object-cover">
+                <?php
+                    $imgFile = $procedure->image && file_exists(WWW_ROOT . 'template' . DS . 'images' . DS . $procedure->image)
+                        ? $procedure->image
+                        : 'procedure_default.jpg';
+                ?>
+                <img src="<?= $this->Url->build('/template/images/' . $imgFile) ?>" alt="<?= h($procedure->name) ?>" class="h-full w-full object-cover">
             </div>
             <div class="p-6 flex flex-col flex-1">
                 <h3 class="text-lg font-semibold leading-6 text-gray-900"><?= h($procedure->name) ?></h3>

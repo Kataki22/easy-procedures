@@ -247,22 +247,22 @@
             </div>
 
             <!-- Admin -->
-            <div class="relative rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-slate-900 to-slate-800 p-8 hover:border-slate-400 hover:shadow-lg transition-all group">
-                <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
+            <div class="relative rounded-2xl border-2 border-red-200 bg-gradient-to-br from-red-600 to-red-700 p-8 hover:border-red-400 hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-shield-halved text-white text-2xl"></i>
                 </div>
-                <span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-semibold text-gray-200 mb-3">Admin</span>
+                <span class="inline-flex items-center rounded-full bg-white/20 px-2.5 py-0.5 text-xs font-semibold text-white mb-3">Admin</span>
                 <h3 class="text-xl font-bold text-white mb-3">Administration</h3>
-                <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                <p class="text-sm text-red-100 leading-relaxed mb-6">
                     Gérez les utilisateurs, configurez les procédures et supervisez l'ensemble de l'activité de la plateforme.
                 </p>
-                <ul class="space-y-2 mb-8 text-sm text-gray-400">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-500 text-xs"></i> Gérer les utilisateurs</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-500 text-xs"></i> Configurer les procédures</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-500 text-xs"></i> Superviser l'activité</li>
+                <ul class="space-y-2 mb-8 text-sm text-red-100">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-200 text-xs"></i> Gérer les utilisateurs</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-200 text-xs"></i> Configurer les procédures</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-200 text-xs"></i> Superviser l'activité</li>
                 </ul>
                 <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Auth', 'action' => 'login']) ?>"
-                   class="btn w-full justify-center bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors">
+                   class="btn w-full justify-center bg-white/20 text-white border border-white/30 hover:bg-white/30 transition-colors">
                     <i class="fa-solid fa-lock text-xs"></i> Accès restreint
                 </a>
             </div>

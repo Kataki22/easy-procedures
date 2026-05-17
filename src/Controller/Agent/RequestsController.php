@@ -17,10 +17,10 @@ class RequestsController extends AppController
     {
         $this->paginate = [
             'contain' => ['Procedures', 'Users'],
-            'conditions' => ['Requests.status IN' => ['pending', 'en attente']]
+            'conditions' => ['Requests.status' => 'pending']
         ];
-        
-        $conditions = ['Requests.status IN' => ['pending', 'en attente']];
+
+        $conditions = ['Requests.status' => 'pending'];
 
         if ($this->request->getQuery('search')) {
             $searchTerm = $this->request->getQuery('search');

@@ -5,12 +5,12 @@ $requestsTable   = \Cake\ORM\TableRegistry::getTableLocator()->get('Requests');
 $proceduresTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Procedures');
 $usersTable      = \Cake\ORM\TableRegistry::getTableLocator()->get('Users');
 
-$totalRequests  = $requestsTable->find()->where(['Requests.deleted' => 0])->count();
-$pendingCount   = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Pending Verification'])->count();
-$approvedCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Approved'])->count();
+$totalRequests  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status !=' => 'Draft'])->count();
+$pendingCount   = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'pending'])->count();
+$approvedCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'success'])->count();
 $procedures     = $proceduresTable->find()->where(['deleted' => 0])->count();
-$users          = $usersTable->find()->where(['deleted' => 0])->count();
-$rejectedCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Rejected'])->count();
+$users          = $usersTable->find()->where(['deleted' => 0, 'id_role' => 2])->count();
+$rejectedCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'rejected'])->count();
 
 $recentRequests = $requestsTable->find()
     ->contain(['Procedures', 'Users'])
@@ -123,16 +123,17 @@ $recentRequests = $requestsTable->find()
                         <td>
                             <?php
                             $statusClass = match($req->status) {
-                                'Approved'            => 'badge-green',
-                                'Rejected'            => 'badge-red',
-                                'Pending Verification'=> 'badge-amber',
-                                default               => 'badge-gray',
+                                'success'  => 'badge-green',
+                                'rejected' => 'badge-red',
+                                'pending'  => 'badge-amber',
+                                default    => 'badge-gray',
                             };
                             $statusLabel = match($req->status) {
-                                'Approved'            => 'Approuvée',
-                                'Rejected'            => 'Rejetée',
-                                'Pending Verification'=> 'En attente',
-                                default               => h($req->status),
+                                'success'  => 'Approuvée',
+                                'rejected' => 'Rejetée',
+                                'pending'  => 'En attente',
+                                'Draft'    => 'Brouillon',
+                                default    => h($req->status),
                             };
                             ?>
                             <span class="<?= $statusClass ?>"><?= $statusLabel ?></span>

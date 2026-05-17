@@ -3,14 +3,14 @@ $this->assign('title', 'Dashboard');
 
 $requestsTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Requests');
 
-$pendingCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Pending Verification'])->count();
-$approvedCount = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Approved'])->count();
-$rejectedCount = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'Rejected'])->count();
-$totalCount    = $requestsTable->find()->where(['Requests.deleted' => 0])->count();
+$pendingCount  = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'pending'])->count();
+$approvedCount = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'success'])->count();
+$rejectedCount = $requestsTable->find()->where(['Requests.deleted' => 0, 'status' => 'rejected'])->count();
+$totalCount    = $requestsTable->find()->where(['Requests.deleted' => 0, 'status !=' => 'Draft'])->count();
 
 $pendingRequests = $requestsTable->find()
     ->contain(['Procedures', 'Users'])
-    ->where(['Requests.deleted' => 0, 'status' => 'Pending Verification'])
+    ->where(['Requests.deleted' => 0, 'status' => 'pending'])
     ->order(['Requests.created' => 'ASC'])
     ->limit(5)
     ->all();

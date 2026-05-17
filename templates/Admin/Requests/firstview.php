@@ -132,12 +132,20 @@ $this->assign('title', 'Validation de la demande');
 
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 pt-4 border-t border-gray-100">
                             <div>
-                                <?php if ($req->value == null) : ?>
+                                <?php
+                                    $filePath = WWW_ROOT . 'template' . DS . 'images' . DS . $req->value;
+                                    $fileExists = !empty($req->value) && file_exists($filePath);
+                                ?>
+                                <?php if (empty($req->value)) : ?>
                                     <span class="text-sm text-gray-500 italic">Aucun document joint.</span>
-                                <?php else : ?>
-                                    <a href="<?= $this->Url->build('/template/images/' . $req->value, ['_full' => true]) ?>" target="_blank" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                <?php elseif ($fileExists) : ?>
+                                    <a href="<?= $this->Url->build('/template/images/' . rawurlencode($req->value)) ?>" target="_blank" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                         <i class="fa-solid fa-eye mr-2 text-indigo-600"></i> Consulter la pièce jointe
                                     </a>
+                                <?php else : ?>
+                                    <span class="inline-flex items-center rounded-md bg-yellow-50 px-3 py-2 text-sm font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                        <i class="fa-solid fa-triangle-exclamation mr-2"></i> Fichier introuvable
+                                    </span>
                                 <?php endif; ?>
                             </div>
                         </div>

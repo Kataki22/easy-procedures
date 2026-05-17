@@ -58,6 +58,7 @@ class RequirementsController extends AppController
         if ($this->request->is('post')) {
             $requirement = $this->Requirements->patchEntity($requirement, $this->request->getData());
             $requirement->deleted = 0;
+            $requirement->status = 'active';
             if ($this->Requirements->save($requirement)) {
                 $this->Flash->success(__('Le pré-requis a été enregistré.'));
 

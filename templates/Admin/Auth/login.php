@@ -1,8 +1,8 @@
 <?php $this->assign('title', 'Portail Administration - Connexion'); ?>
 
 <div class="mb-8 text-center">
-    <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 mb-4">Administrateur</span>
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Accès Administration</h2>
+    <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 mb-4">Admin</span>
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Administration</h2>
 </div>
 
 <?= $this->Form->create(null, ['class' => 'space-y-6']); ?>

@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `procedures` (
   `name` VARCHAR(40) NOT NULL,
   `type` VARCHAR(50) NOT NULL,
   `image` VARCHAR(250) DEFAULT NULL,
-  `description` VARCHAR(50) NOT NULL,
+  `description` TEXT NOT NULL,
   `deleted` TINYINT(1) NOT NULL DEFAULT 0,
   `modified_by` INT DEFAULT NULL,
   `created` DATETIME DEFAULT NULL,

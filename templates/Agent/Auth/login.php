@@ -1,7 +1,7 @@
 <?php $this->assign('title', 'Portail Agent - Connexion'); ?>
 
 <div class="mb-8 text-center">
-    <span class="inline-flex items-center rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-600/10 mb-4">Agent Commercial</span>
+    <span class="inline-flex items-center rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-600/10 mb-4">Agent</span>
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Espace Commercial</h2>
 </div>
 
